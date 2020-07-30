@@ -1,0 +1,47 @@
+
+[package]
+name = "bls-fuzz-fuzz"
+version = "0.0.0"
+authors = ["Automatically generated"]
+publish = false
+edition = "2018"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.2"
+blst = { git = "https://github.com/supranational/blst.git", rev = "328cfc04cd1e4cdbe8659f6915d6ac4b9b8cf2b9" }
+milagro_bls = { git = "https://github.com/sigp/milagro_bls", rev = "51c3b98279aaab8bd57e9e313b29a5eea3e6d67b" }
+bls12_381 = "0.1.1"
+
+[dependencies.bls-fuzz]
+path = ".."
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "fuzz_blst_serde_pk"
+path = "fuzz_targets/fuzz_blst_serde_pk.rs"
+
+[[bin]]
+name = "fuzz_blst_serde_sig"
+path = "fuzz_targets/fuzz_blst_serde_sig.rs"
+
+[[bin]]
+name = "fuzz_milagro_serde_pk"
+path = "fuzz_targets/fuzz_milagro_serde_pk.rs"
+
+[[bin]]
+name = "fuzz_milagro_serde_sig"
+path = "fuzz_targets/fuzz_milagro_serde_sig.rs"
+
+[[bin]]
+name = "fuzz_differential_serde_g1"
+path = "fuzz_targets/fuzz_differential_serde_g1.rs"
+
+[[bin]]
+name = "fuzz_differential_add_g1"
+path = "fuzz_targets/fuzz_differential_add_g1.rs"
