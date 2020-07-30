@@ -11,7 +11,7 @@ cargo-fuzz = true
 
 [dependencies]
 libfuzzer-sys = "0.2"
-blst = { git = "https://github.com/supranational/blst.git", rev = "328cfc04cd1e4cdbe8659f6915d6ac4b9b8cf2b9" }
+blst = { path = "../impls/blst/bindings/rust" }
 milagro_bls = { git = "https://github.com/sigp/milagro_bls", rev = "51c3b98279aaab8bd57e9e313b29a5eea3e6d67b" }
 bls12_381 = "0.1.1"
 
@@ -45,3 +45,7 @@ path = "fuzz_targets/fuzz_differential_serde_g1.rs"
 [[bin]]
 name = "fuzz_differential_add_g1"
 path = "fuzz_targets/fuzz_differential_add_g1.rs"
+
+[[bin]]
+name = "fuzz_differential_mul_g1"
+path = "fuzz_targets/fuzz_differential_mul_g1.rs"

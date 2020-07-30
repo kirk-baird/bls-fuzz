@@ -6,4 +6,7 @@ edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[dependencies]
+[dependencies.amcl]
+git = "https://github.com/apache/incubator-milagro-crypto-rust"
+rev = "8b9913799bb2a9568515d118970ec0f09910492b"
+features = ["bls381"]

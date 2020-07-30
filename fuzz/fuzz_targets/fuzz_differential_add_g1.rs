@@ -11,6 +11,9 @@ fuzz_target!(|data: &[u8]| {
     let a = &data[0..48];
     let b = &data[48..];
 
+    // Known BLST Issue (0, +-2) is counted as infinity
+    if a[0] == 128 || a[0] == 160 || b[0] == 128 || b[0] == 160 { return; }
+
     if let Ok(milagro_a) = MilagroPublicKey::from_bytes(a) {
         if let Ok(milagro_b) = MilagroPublicKey::from_bytes(b) {
             // Milagro
@@ -28,7 +31,7 @@ fuzz_target!(|data: &[u8]| {
             // ZK-crypto
             let mut data_array = [0u8; 48];
             data_array.copy_from_slice(a);
-            let mut zkcrypto_a: G1Projective = G1Affine::from_compressed_unchecked(&data_array).unwrap().into();
+            let zkcrypto_a: G1Projective = G1Affine::from_compressed_unchecked(&data_array).unwrap().into();
             data_array.copy_from_slice(b);
             let zkcrypto_b: G1Projective = G1Affine::from_compressed_unchecked(&data_array).unwrap().into();
             let zkcrypto_c: G1Affine = zkcrypto_a.add(&zkcrypto_b).into();
