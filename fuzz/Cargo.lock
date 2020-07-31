@@ -25,12 +25,14 @@ name = "bls-fuzz"
 version = "0.1.0"
 dependencies = [
  "amcl 0.3.0",
+ "blst",
 ]
 
 [[package]]
 name = "bls-fuzz-fuzz"
 version = "0.0.0"
 dependencies = [
+ "amcl 0.3.0",
  "bls-fuzz",
  "bls12_381",
  "blst",
