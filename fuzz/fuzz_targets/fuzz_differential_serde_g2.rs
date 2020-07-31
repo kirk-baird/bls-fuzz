@@ -5,9 +5,6 @@ use blst::min_pk::Signature as BlstSignature;
 use bls12_381::G2Affine;
 
 fuzz_target!(|data: &[u8]| {
-    // TODO: Known BLST Issue (0, +-2) is counted as infinity
-    if data.len() > 0 && (data[0] == 128 || data[0] == 160) { return; }
-
     // TODO: Do milagro first as BLST currently has know injectiveness issues
     // and ZK-crypto requires valid bytes.
     if let Ok(milagro_g2) = MilagroSignature::from_bytes(data) {

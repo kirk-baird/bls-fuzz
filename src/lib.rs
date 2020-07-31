@@ -8,10 +8,10 @@ pub const Q_HEX: &str = "73eda753299d7d483339d80809a1d80553bda402fffe5bfefffffff
 pub mod milagro_helpers {
     use super::*;
 
-    use amcl::errors::AmclError;
+    use amcl::bls381::bls381::utils::{deserialize_g1, deserialize_g2, serialize_g1, serialize_g2};
     use amcl::bls381::ecp::ECP;
     use amcl::bls381::ecp2::ECP2;
-    use amcl::bls381::bls381::utils::{deserialize_g1, serialize_g1, deserialize_g2, serialize_g2};
+    use amcl::errors::AmclError;
 
     pub fn decompress_g1(g1_bytes: &[u8]) -> Result<ECP, AmclError> {
         if g1_bytes.len() != G1_BYTES {
@@ -39,8 +39,8 @@ pub mod milagro_helpers {
 pub mod blst_helpers {
     use super::*;
 
-    use blst::*;
     use blst::min_pk::*;
+    use blst::*;
 
     pub fn mul_scalar_g1(point: &PublicKey, scalar: &SecretKey) -> PublicKey {
         let mut out = PublicKey::default();
