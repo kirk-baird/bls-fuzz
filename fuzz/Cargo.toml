@@ -28,20 +28,20 @@ features = ["bls381"]
 members = ["."]
 
 [[bin]]
-name = "fuzz_blst_serde_pk"
-path = "fuzz_targets/fuzz_blst_serde_pk.rs"
+name = "fuzz_blst_serde_g1"
+path = "fuzz_targets/fuzz_blst_serde_g1.rs"
 
 [[bin]]
-name = "fuzz_blst_serde_sig"
-path = "fuzz_targets/fuzz_blst_serde_sig.rs"
+name = "fuzz_blst_serde_g2"
+path = "fuzz_targets/fuzz_blst_serde_g2.rs"
 
 [[bin]]
-name = "fuzz_milagro_serde_pk"
-path = "fuzz_targets/fuzz_milagro_serde_pk.rs"
+name = "fuzz_milagro_serde_g1"
+path = "fuzz_targets/fuzz_milagro_serde_g1.rs"
 
 [[bin]]
-name = "fuzz_milagro_serde_sig"
-path = "fuzz_targets/fuzz_milagro_serde_sig.rs"
+name = "fuzz_milagro_serde_g2"
+path = "fuzz_targets/fuzz_milagro_serde_g2.rs"
 
 [[bin]]
 name = "fuzz_differential_serde_g1"
