@@ -16,11 +16,11 @@ fuzz_target!(|data: &[u8]| {
     let a = &data[0..96];
     let b = &data[96..];
 
-    if let Ok(milagro_a) = milagro_helpers::decompress_g1(a) {
+    if let Ok(milagro_a) = milagro_helpers::decompress_g2(a) {
         if let Ok(milagro_b) = secret_key_from_bytes(b) {
             // Milagro
             let milagro_c = milagro_a.mul(&milagro_b);
-            let c_bytes = milagro_helpers::compress_g1(&milagro_c).to_vec();
+            let c_bytes = milagro_helpers::compress_g2(&milagro_c).to_vec();
 
             // BLST
             let blst_a = BlstSignature::uncompress(a).unwrap();
