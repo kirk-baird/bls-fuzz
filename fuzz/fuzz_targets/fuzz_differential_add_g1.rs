@@ -5,7 +5,7 @@ use blst::min_pk::{AggregatePublicKey as BlstAggregatePublicKey, PublicKey as Bl
 use bls12_381::{G1Affine, G1Projective};
 use core::ops::Add;
 
-// Tests a + b = c for all implementations against milagro bls
+// Tests a + b = c (a,b,c are on G1) for all implementations against milagro bls
 fuzz_target!(|data: &[u8]| {
     if data.len() != 96 { return; }
     let a = &data[0..48];

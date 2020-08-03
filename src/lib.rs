@@ -37,8 +37,6 @@ pub mod milagro_helpers {
 }
 
 pub mod blst_helpers {
-    use super::*;
-
     use blst::min_pk::*;
     use blst::*;
 
@@ -50,6 +48,18 @@ pub mod blst_helpers {
             let mut t2 = blst_p1::default();
             blst::blst_p1_mult(&mut t2, &t1, &scalar.value, 255);
             blst_p1_to_affine(&mut out.point, &t2);
+        }
+        out
+    }
+
+    pub fn mul_scalar_g2(point: &Signature, scalar: &SecretKey) -> Signature {
+        let mut out = Signature::default();
+        let mut t1 = blst_p2::default();
+        unsafe {
+            blst_p2_from_affine(&mut t1, &point.point);
+            let mut t2 = blst_p2::default();
+            blst::blst_p2_mult(&mut t2, &t1, &scalar.value, 255);
+            blst_p2_to_affine(&mut out.point, &t2);
         }
         out
     }

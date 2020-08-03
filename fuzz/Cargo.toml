@@ -56,5 +56,13 @@ name = "fuzz_differential_add_g1"
 path = "fuzz_targets/fuzz_differential_add_g1.rs"
 
 [[bin]]
+name = "fuzz_differential_add_g2"
+path = "fuzz_targets/fuzz_differential_add_g2.rs"
+
+[[bin]]
 name = "fuzz_differential_mul_g1"
 path = "fuzz_targets/fuzz_differential_mul_g1.rs"
+
+[[bin]]
+name = "fuzz_differential_mul_g2"
+path = "fuzz_targets/fuzz_differential_mul_g2.rs"
